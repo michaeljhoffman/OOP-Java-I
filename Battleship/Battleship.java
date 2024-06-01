@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Battleship {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Battleship!");
+		System.out.println("PLAYER 1, ENTER YOUR SHIPS' COORDINATES.");
 	}
 
 	// Use this method to print game boards to the console.
