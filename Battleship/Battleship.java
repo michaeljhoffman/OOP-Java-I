@@ -1,11 +1,23 @@
 import java.util.Scanner;
 public class Battleship {
 	public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		int[][] player1ships = new int[5][2];	
+
 		System.out.println("Welcome to Battleship!");
+		System.out.println();
 		System.out.println("PLAYER 1, ENTER YOUR SHIPS' COORDINATES.");
 
 		for (int i=1; i<=5; i++) {
 			System.out.println("Enter ship " + i + " location:");
+
+			if (in.hasNextInt()) {
+				f = in.nextInt();
+			} else {
+				System.out.println("Invalid input entered. Terminating...");
+				break;
+			}
 		}
 	}
 
