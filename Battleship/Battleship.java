@@ -9,15 +9,16 @@ public class Battleship {
 		System.out.println();
 		System.out.println("PLAYER 1, ENTER YOUR SHIPS' COORDINATES.");
 
-		for (int i=1; i<=5; i++) {
-			System.out.println("Enter ship " + i + " location:");
+		for (int i=0; i<5; i++) {
+			System.out.println("Enter ship " + (i + 1) + " location:");
 
-			if (in.hasNextInt()) {
-				f = in.nextInt();
-			} else {
-				System.out.println("Invalid input entered. Terminating...");
-				break;
-			}
+			for (int j=0; j<2; j++) {
+				while(!in.hasNextInt()) {
+					System.out.println("Invalid coordinates. Choose different coordinates.");
+					in.next();
+				}
+					player1ships[i][j] = in.nextInt();
+			}			
 		}
 	}
 
