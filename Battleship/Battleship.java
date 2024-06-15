@@ -6,29 +6,39 @@ public class Battleship {
 		int[][] player1ships = new int[5][2];
 		int[][] player2ships = new int[5][2];
 
+		char[][] player1locationBoards = new char[5][5];
+		char[][] player2locationBoards = new char[5][5];
+
 		System.out.println("Welcome to Battleship!");
 		System.out.println();
-		
 
 		for (int p=0; p<2; p++){
 			System.out.println("PLAYER " + (p+1) + ", ENTER YOUR SHIPS' COORDINATES.");
 			for (int i=0; i<5; i++) {
 				System.out.println("Enter ship " + (i + 1) + " location:");
+				int[][] tempArray = new int[1][2];
+
 				for (int j=0; j<2; j++) {
 					while(!in.hasNextInt()) {
 						System.out.println("Invalid coordinates. Choose different coordinates.");
 						in.next();
 					}
-					if (p == 0) {
-						player1ships[i][j] = in.nextInt();
-					} else if (p == 1) {
-						player2ships[i][j] = in.nextInt();
-					}
 					
+					tempArray[0][j] = in.nextInt();
+
+				}
+
+				if (p == 0) {
+					player1ships[i] = tempArray[0];
+				} else if (p == 1) {
+					player2ships[i] = tempArray[0];
 				}
 			}
 		}
+
+
 	}
+
 
 		// Use this method to print game boards to the console.
 		private static void printBattleShip(char[][] player) {
