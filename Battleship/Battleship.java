@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Battleship {
 	public static void main(String[] args) {
 
@@ -6,12 +7,13 @@ public class Battleship {
 		int[][] player1ships = new int[5][2];
 		int[][] player2ships = new int[5][2];
 
-		char[][] player1locationBoards = new char[5][5];
-		char[][] player2locationBoards = new char[5][5];
+		char[][] player1locationBoard = new char[5][5];
+		char[][] player2locationBoard = new char[5][5];
 
 		System.out.println("Welcome to Battleship!");
 		System.out.println();
 
+		// take in coordinates from players
 		for (int p=0; p<2; p++){
 			System.out.println("PLAYER " + (p+1) + ", ENTER YOUR SHIPS' COORDINATES.");
 			for (int i=0; i<5; i++) {
@@ -35,6 +37,28 @@ public class Battleship {
 				}
 			}
 		}
+
+		// initiallize location boards with – as default character
+		for (int i = 0; i<5; i++){
+			for (int j = 0; i<5; i++) {
+				player1locationBoard[i][j] = '–';
+				player2locationBoard[i][j] = '–';
+			}
+		}
+
+		for (int i=0; i<5; i++){
+			// int[][] shipCoor  = new int[1][2];
+			int[][] shipCoor1 = new int[1][2];
+			int[][] shipCoor2 = new int[1][2];
+
+			shipCoor1[0] = player1ships[i];
+			shipCoor2[0] = player2ships[i];
+
+			player1locationBoard[shipCoor1[0][0]][shipCoor1[0][1]] = '@';
+			player2locationBoard[shipCoor2[0][0]][shipCoor2[0][1]] = '@';
+		}
+
+
 
 
 	}
