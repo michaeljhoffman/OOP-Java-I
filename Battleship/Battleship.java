@@ -51,6 +51,11 @@ public class Battleship {
 						while(!in.hasNextInt()) {
 							System.out.println("Invalid coordinates. Choose different coordinates.");
 							in.next();
+							
+							while(in.hasNextInt() && in.nextInt() < 0) {
+								System.out.println("Invalid coordinates. Choose different coordinates.");
+								in.next();
+							}
 						}
 						
 						tempArray[0][j] = in.nextInt();
@@ -192,6 +197,11 @@ public class Battleship {
 			while(!in.hasNextInt()) {
 				System.out.println("Invalid coordinates. Choose different coordinates.");
 				in.next();
+				
+				while(in.hasNextInt() && in.nextInt() < 0) {
+					System.out.println("Invalid coordinates. Choose different coordinates.");
+					in.next();
+				}
 			}
 			tempArray[0][j] = in.nextInt();
 		}
