@@ -5,6 +5,7 @@ public class Battleship {
 
 		Scanner in = new Scanner(System.in);
 
+
 		// initialize location boards with default character
 		char[][] player1LB = {
 			{ '-','-','-','-','-'},
