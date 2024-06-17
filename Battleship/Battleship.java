@@ -78,7 +78,9 @@ public class Battleship {
 		}
 
 		// gameplay
-		Boolean winner = false;
+		Boolean p1win = false;
+		Boolean p2win = true;
+
 		do {
 			for(int p=1; p<=2; p++) {
 				int[][] hitCoor = new int[1][2];
@@ -125,40 +127,56 @@ public class Battleship {
 						player1LB[r][c] = 'X';
 						player2TH[r][c] = 'X';
 						System.out.println("PLAYER 2 HIT PLAYER 1's SHIP!");
-						printBattleShip(player1TH);
+						printBattleShip(player2TH);
 					} else if (player1LB[r][c]!='@') {
 						player1LB[r][c] = 'O';
 						player2TH[r][c] = 'O';
 						System.out.println("PLAYER 2 MISSED!");
-						printBattleShip(player1TH);
+						printBattleShip(player2TH);
 					}
 
 				}
 
-				winner = checkWinner();
+				p1win = checkWinner(player1TH);
+				p2win = checkWinner(player2TH);
 
-				if (winner) {
+				if (p1win || p2win) {
 					break;
 				}
 
 			}
 
-		} while(!winner);
+		} while(!(p1win || p2win));
+
+		if (p1win){
+			System.err.println("PLAYER 1 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
+		} else if (p2win){
+			System.err.println("PLAYER 2 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
+		}
+
+		System.out.println("Final boards:");
+		printBattleShip(player1LB);
+		printBattleShip(player2LB);
 	}
 
+		
+
 	// checkWinner
-	private static void checkWinner(char[][] player1TH, char[][] player2Th) {
-		int Xcount1 = 0;
-		int Xcount2 = 0;
-		for (int i=0; i++; i<5){
-			for (int j=0; j++; j<5){
-				if (player1TH[r][c] == 'X') {
-					Xcount1++;
-				}
-				if (player2TH[r][c] == 'X') {
-					Xcount2++;
+	private static boolean checkWinner(char[][] playerTH) {
+		int Xcount = 0;
+
+		for (int i=0; i<5; i++){
+			for (int j=0; j<5; j++){
+				if (playerTH[i][j] == 'X') {
+					Xcount++;
 				}
 			}
+		}
+
+		if (Xcount == 5) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
