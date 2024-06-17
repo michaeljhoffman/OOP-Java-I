@@ -176,31 +176,13 @@ public class Battleship {
 		}
 	}
 
-	// check input validitiy
-	// private static int[][] checkInput() {
-	// 	Scanner in = new Scanner(System.in);
-	// 	int[][] tempArray = new int[1][2];
-	// 	int newInteger = -1;
 
-	// 	for (int j=0; j<2; j++) {
-	// 		newInteger = validInt(in);
-	// 		while(newInteger < 0) {
-	// 			System.out.println("Invalid coordinates. Choose different coordinates.");
-	// 			newInteger = validInt(in);
-	// 		}
-	// 		tempArray[0][j] = newInteger;
-	// 	}
-		
-	// 	return tempArray;
-	// }
-
-	public static int[] checkInput() {
+	public static int[][] checkInput() {
         Scanner scanner = new Scanner(System.in);
-        int[] coordinates = new int[2];
+        int[][] coordinates = new int[1][2];
         boolean validInput = false;
 
         while (!validInput) {
-            System.out.println("Enter two integers between 0 and 4 separated by a space:");
 
             String input = scanner.nextLine();
             String[] parts = input.split(" ");
@@ -211,8 +193,8 @@ public class Battleship {
                     int secondInt = Integer.parseInt(parts[1]);
 
                     if (firstInt >= 0 && firstInt <= 4 && secondInt >= 0 && secondInt <= 4) {
-                        coordinates[0] = firstInt;
-                        coordinates[1] = secondInt;
+                        coordinates[0][0] = firstInt;
+                        coordinates[0][1] = secondInt;
                         validInput = true;
                     } else {
                         System.out.println("Invalid coordinates. Choose different coordinates.");
