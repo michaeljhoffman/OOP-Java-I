@@ -46,21 +46,21 @@ public class Battleship {
 			}
 		}
 
+		// fill location boards with player input
 		for (int i=0; i<5; i++){
-			// int[][] shipCoor  = new int[1][2];
 			int[][] shipCoor1 = new int[1][2];
 			int[][] shipCoor2 = new int[1][2];
 
 			shipCoor1[0] = player1ships[i];
 			shipCoor2[0] = player2ships[i];
 
-			player1locationBoard[shipCoor1[0][0]][shipCoor1[0][1]] = '@';
-			player2locationBoard[shipCoor2[0][0]][shipCoor2[0][1]] = '@';
+			player1locationBoard[shipCoor1[0][0] - 1][shipCoor1[0][1] - 1] = '@';
+			player2locationBoard[shipCoor2[0][0] - 1][shipCoor2[0][1] - 1] = '@';
 		}
 
 
-
-
+		printBattleShip(player1locationBoard);
+		printBattleShip(player2locationBoard);
 	}
 
 
