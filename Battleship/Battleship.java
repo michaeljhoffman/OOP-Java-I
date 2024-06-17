@@ -143,11 +143,14 @@ public class Battleship {
 
 		if (p1win){
 			System.err.println("PLAYER 1 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
+			System.out.println("");
 		} else if (p2win){
 			System.err.println("PLAYER 2 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
+			System.out.println("");
 		}
 
 		System.out.println("Final boards:");
+		System.out.println("");
 		printBattleShip(player1LB);
 		printBattleShip(player2LB);
 	}
