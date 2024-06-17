@@ -7,8 +7,20 @@ public class Battleship {
 		int[][] player1ships = new int[5][2];
 		int[][] player2ships = new int[5][2];
 
-		char[][] player1locationBoard = new char[5][5];
-		char[][] player2locationBoard = new char[5][5];
+		char[][] player1locationBoard = {
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'}
+		};
+		char[][] player2locationBoard = {
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'}
+		};
 
 		System.out.println("Welcome to Battleship!");
 		System.out.println();
@@ -64,21 +76,22 @@ public class Battleship {
 	}
 
 
-		// Use this method to print game boards to the console.
-		private static void printBattleShip(char[][] player) {
-			System.out.print("  ");
-			for (int row = -1; row < 5; row++) {
-				if (row > -1) {
-					System.out.print(row + " ");
-				}
-				for (int column = 0; column < 5; column++) {
-					if (row == -1) {
-						System.out.print(column + " ");
-					} else {
-						System.out.print(player[row][column] + " ");
-				}
-				System.out.println("");
+		
+	// Use this method to print game boards to the console.
+	private static void printBattleShip(char[][] player) {
+		System.out.print("  ");
+		for (int row = -1; row < 5; row++) {
+			if (row > -1) {
+				System.out.print(row + " ");
 			}
+			for (int column = 0; column < 5; column++) {
+				if (row == -1) {
+					System.out.print(column + " ");
+				} else {
+					System.out.print(player[row][column] + " ");
+				}
+			}
+			System.out.println("");
 		}
 	}
 }
