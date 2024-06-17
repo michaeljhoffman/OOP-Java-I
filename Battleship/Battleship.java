@@ -88,28 +88,78 @@ public class Battleship {
 
 				hitCoor = checkInput();
 				
-				r = hitCoor[0][0]
-				
+				r = hitCoor[0][0];
+				c = hitCoor[0][1];
 
 				if (p == 1) {
-					while(player1TH[r][c] == '-') {
 
-						hitCoor[0][j] = in.nextInt();
-
+					while(player1TH[r][c] != '-') {
+						System.err.println("You already fired on this spot. Choose different coordinates.");
+						hitCoor = checkInput();
 						r = hitCoor[0][0];
 						c = hitCoor[0][1];
-
 					} 
 
+					if (player2LB[r][c]=='@') {
+						player2LB[r][c] = 'X';
+						player1TH[r][c] = 'X';
+						System.out.println("PLAYER 1 HIT PLAYER 2's SHIP!");
+						printBattleShip(player1TH);
+					} else if (player2LB[r][c]!='@') {
+						player2LB[r][c] = 'O';
+						player1TH[r][c] = 'O';
+						System.out.println("PLAYER 1 MISSED!");
+						printBattleShip(player1TH);
+					}
+
 				} else if (p == 2) {
+					
+					while(player2TH[r][c] != '-') {
+						System.err.println("You already fired on this spot. Choose different coordinates.");
+						hitCoor = checkInput();
+						r = hitCoor[0][0];
+						c = hitCoor[0][1];
+					} 
 
+					if (player1LB[r][c]=='@') {
+						player1LB[r][c] = 'X';
+						player2TH[r][c] = 'X';
+						System.out.println("PLAYER 2 HIT PLAYER 1's SHIP!");
+						printBattleShip(player1TH);
+					} else if (player1LB[r][c]!='@') {
+						player1LB[r][c] = 'O';
+						player2TH[r][c] = 'O';
+						System.out.println("PLAYER 2 MISSED!");
+						printBattleShip(player1TH);
+					}
 
+				}
 
+				winner = checkWinner();
+
+				if (winner) {
+					break;
 				}
 
 			}
 
 		} while(!winner);
+	}
+
+	// checkWinner
+	private static void checkWinner(char[][] player1TH, char[][] player2Th) {
+		int Xcount1 = 0;
+		int Xcount2 = 0;
+		for (int i=0; i++; i<5){
+			for (int j=0; j++; j<5){
+				if (player1TH[r][c] == 'X') {
+					Xcount1++;
+				}
+				if (player2TH[r][c] == 'X') {
+					Xcount2++;
+				}
+			}
+		}
 	}
 
 	// check input validitiy
