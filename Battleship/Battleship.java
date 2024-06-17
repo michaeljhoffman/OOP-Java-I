@@ -62,8 +62,6 @@ public class Battleship {
 			}
 		}
 	}
-
-
 		
 	// Use this method to print game boards to the console.
 	private static void printBattleShip(char[][] player) {
