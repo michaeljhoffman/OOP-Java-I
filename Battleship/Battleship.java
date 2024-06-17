@@ -21,6 +21,21 @@ public class Battleship {
 			{ '-','-','-','-','-'}
 		};
 
+		char[][] player1TH = {
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'}
+		};
+		char[][] player2TH = {
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'},
+			{ '-','-','-','-','-'}
+		};
+
 		System.out.println("Welcome to Battleship!");
 		System.out.println();
 
@@ -61,7 +76,28 @@ public class Battleship {
 				System.out.println();
 			}
 		}
+
+		// gameplay
+		Boolean winner = false;
+		do {
+
+			for(int p=1; p<=2; p++) {
+				int[][] hitCoor = new int[1][2];
+				System.err.println("Player " + p + ", enter hit row/column:");
+
+				for (int j=0; j<2; j++) {
+					
+					while(!in.hasNextInt()) {
+						System.out.println("Invalid coordinates. Choose different coordinates.");
+						in.next();
+					}
+					hitCoor[0][j] = in.nextInt();
+				}
+			}
+
+		} while(!winner);
 	}
+
 		
 	// Use this method to print game boards to the console.
 	private static void printBattleShip(char[][] player) {
