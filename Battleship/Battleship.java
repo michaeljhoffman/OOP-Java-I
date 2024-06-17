@@ -44,10 +44,12 @@ public class Battleship {
 		for (int p=0; p<2; p++){
 			System.out.println("PLAYER " + (p+1) + ", ENTER YOUR SHIPS' COORDINATES.");
 				for (int i=0; i<5; i++) {
-					System.out.println("Enter ship " + (i + 1) + " location:");
+					String prompt = "Enter ship " + (i + 1) + " location:";
+					System.out.println(prompt);
+
 					int[][] tempArray = new int[1][2];
 												
-					tempArray = checkInput();
+					tempArray = checkInput(prompt);
 
 					int r = tempArray[0][0];
 					int c = tempArray[0][1];
@@ -76,11 +78,12 @@ public class Battleship {
 		do {
 			for(int p=1; p<=2; p++) {
 				int[][] hitCoor = new int[1][2];
-				System.err.println("Player " + p + ", enter hit row/column:");
+				String prompt = "Player " + p + ", enter hit row/column:";
+				System.out.println();
 
 				int r, c;
 
-				hitCoor = checkInput();
+				hitCoor = checkInput(prompt);
 				
 				r = hitCoor[0][0];
 				c = hitCoor[0][1];
@@ -88,8 +91,8 @@ public class Battleship {
 				if (p == 1) {
 
 					while(player1TH[r][c] != '-') {
-						System.err.println("You already fired on this spot. Choose different coordinates.");
-						hitCoor = checkInput();
+						System.out.println("You already fired on this spot. Choose different coordinates.");
+						hitCoor = checkInput(prompt);
 						r = hitCoor[0][0];
 						c = hitCoor[0][1];
 					} 
@@ -109,8 +112,8 @@ public class Battleship {
 				} else if (p == 2) {
 					
 					while(player2TH[r][c] != '-') {
-						System.err.println("You already fired on this spot. Choose different coordinates.");
-						hitCoor = checkInput();
+						System.out.println("You already fired on this spot. Choose different coordinates.");
+						hitCoor = checkInput(prompt);
 						r = hitCoor[0][0];
 						c = hitCoor[0][1];
 					} 
@@ -142,16 +145,17 @@ public class Battleship {
 		} while(!(p1win || p2win));
 
 		if (p1win){
-			System.err.println("PLAYER 1 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
+			System.out.println("PLAYER 1 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
 			System.out.println("");
 		} else if (p2win){
-			System.err.println("PLAYER 2 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
+			System.out.println("PLAYER 2 WINS! YOU SUNK ALL OF YOUR OPPONENT'S SHIPS!");
 			System.out.println("");
 		}
 
 		System.out.println("Final boards:");
 		System.out.println("");
 		printBattleShip(player1LB);
+		System.out.println("");
 		printBattleShip(player2LB);
 	}
 
@@ -177,7 +181,7 @@ public class Battleship {
 	}
 
 
-	public static int[][] checkInput() {
+	public static int[][] checkInput(String prompt) {
         Scanner scanner = new Scanner(System.in);
         int[][] coordinates = new int[1][2];
         boolean validInput = false;
@@ -198,25 +202,20 @@ public class Battleship {
                         validInput = true;
                     } else {
                         System.out.println("Invalid coordinates. Choose different coordinates.");
+						System.out.println(prompt);
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid coordinates. Choose different coordinates.");
+					System.out.println(prompt);
                 }
             } else {
                 System.out.println("Invalid coordinates. Choose different coordinates.");
+				System.out.println(prompt);
             }
         }
 
         return coordinates;
     }
-
-	private static int validInt(Scanner sc) {
-		while(!sc.hasNextInt()) {
-			System.out.println("Invalid coordinates. Choose different coordinates.");
-			sc.nextInt();
-		}
-		return sc.nextInt();
-	}
 
 		
 	// Use this method to print game boards to the console.
