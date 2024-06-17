@@ -4,17 +4,16 @@ public class Battleship {
 	public static void main(String[] args) {
 
 		Scanner in = new Scanner(System.in);
-		int[][] player1ships = new int[5][2];
-		int[][] player2ships = new int[5][2];
 
-		char[][] player1locationBoard = {
+		// initialize location boards with default character
+		char[][] player1LB = {
 			{ '-','-','-','-','-'},
 			{ '-','-','-','-','-'},
 			{ '-','-','-','-','-'},
 			{ '-','-','-','-','-'},
 			{ '-','-','-','-','-'}
 		};
-		char[][] player2locationBoard = {
+		char[][] player2LB = {
 			{ '-','-','-','-','-'},
 			{ '-','-','-','-','-'},
 			{ '-','-','-','-','-'},
@@ -26,6 +25,7 @@ public class Battleship {
 		System.out.println();
 
 		// take in coordinates from players
+		// enter coordinates into location boards
 		for (int p=0; p<2; p++){
 			System.out.println("PLAYER " + (p+1) + ", ENTER YOUR SHIPS' COORDINATES.");
 			for (int i=0; i<5; i++) {
@@ -42,37 +42,19 @@ public class Battleship {
 
 				}
 
+				int r = tempArray[0][0];
+				int c = tempArray[0][1];
+
 				if (p == 0) {
-					player1ships[i] = tempArray[0];
+					player1LB[r][c] = '@';
 				} else if (p == 1) {
-					player2ships[i] = tempArray[0];
+					player2LB[r][c] = '@';
 				}
 			}
 		}
 
-		// initiallize location boards with – as default character
-		for (int i = 0; i<5; i++){
-			for (int j = 0; i<5; i++) {
-				player1locationBoard[i][j] = '–';
-				player2locationBoard[i][j] = '–';
-			}
-		}
-
-		// fill location boards with player input
-		for (int i=0; i<5; i++){
-			int[][] shipCoor1 = new int[1][2];
-			int[][] shipCoor2 = new int[1][2];
-
-			shipCoor1[0] = player1ships[i];
-			shipCoor2[0] = player2ships[i];
-
-			player1locationBoard[shipCoor1[0][0] - 1][shipCoor1[0][1] - 1] = '@';
-			player2locationBoard[shipCoor2[0][0] - 1][shipCoor2[0][1] - 1] = '@';
-		}
-
-
-		printBattleShip(player1locationBoard);
-		printBattleShip(player2locationBoard);
+		printBattleShip(player1LB);
+		printBattleShip(player2LB);
 	}
 
 
