@@ -99,13 +99,11 @@ public class Battleship {
 						player1TH[r][c] = 'X';
 						System.out.println("PLAYER 1 HIT PLAYER 2's SHIP!");
 						printBattleShip(player1TH);
-						System.out.println("");
 					} else if (player2LB[r][c]!='@') {
 						player2LB[r][c] = 'O';
 						player1TH[r][c] = 'O';
 						System.out.println("PLAYER 1 MISSED!");
 						printBattleShip(player1TH);
-						System.out.println("");
 					}
 
 				} else if (p == 2) {
@@ -122,13 +120,12 @@ public class Battleship {
 						player2TH[r][c] = 'X';
 						System.out.println("PLAYER 2 HIT PLAYER 1's SHIP!");
 						printBattleShip(player2TH);
-						System.out.println("");
 					} else if (player1LB[r][c]!='@') {
 						player1LB[r][c] = 'O';
 						player2TH[r][c] = 'O';
 						System.out.println("PLAYER 2 MISSED!");
 						printBattleShip(player2TH);
-						System.out.println("");
+						
 					}
 
 				}
@@ -139,7 +136,7 @@ public class Battleship {
 				if (p1win || p2win) {
 					break;
 				}
-
+				System.out.println("");
 			}
 
 		} while(!(p1win || p2win));
