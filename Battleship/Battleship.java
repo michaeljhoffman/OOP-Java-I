@@ -55,8 +55,22 @@ public class Battleship {
 					int c = tempArray[0][1];
 
 					if (p == 0) {
+						while(player1LB[r][c] != '-') {
+							System.out.println("You already have a ship there. Choose different coordinates.");
+							System.out.println(prompt);
+							tempArray = checkInput(prompt);
+							r = tempArray[0][0];
+							c = tempArray[0][1];
+						} 
 						player1LB[r][c] = '@';
 					} else if (p == 1) {
+						while(player2LB[r][c] != '-') {
+							System.out.println("You already have a ship there. Choose different coordinates.");
+							System.out.println(prompt);
+							tempArray = checkInput(prompt);
+							r = tempArray[0][0];
+							c = tempArray[0][1];
+						} 
 						player2LB[r][c] = '@';
 					}
 				}
@@ -79,7 +93,7 @@ public class Battleship {
 			for(int p=1; p<=2; p++) {
 				int[][] hitCoor = new int[1][2];
 				String prompt = "Player " + p + ", enter hit row/column:";
-				System.out.println();
+				System.out.println(prompt);
 
 				int r, c;
 
@@ -92,6 +106,7 @@ public class Battleship {
 
 					while(player1TH[r][c] != '-') {
 						System.out.println("You already fired on this spot. Choose different coordinates.");
+						System.out.println(prompt);
 						hitCoor = checkInput(prompt);
 						r = hitCoor[0][0];
 						c = hitCoor[0][1];
@@ -113,6 +128,7 @@ public class Battleship {
 					
 					while(player2TH[r][c] != '-') {
 						System.out.println("You already fired on this spot. Choose different coordinates.");
+						System.out.println(prompt);
 						hitCoor = checkInput(prompt);
 						r = hitCoor[0][0];
 						c = hitCoor[0][1];
