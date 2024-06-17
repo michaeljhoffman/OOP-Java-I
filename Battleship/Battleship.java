@@ -80,22 +80,51 @@ public class Battleship {
 		// gameplay
 		Boolean winner = false;
 		do {
-
 			for(int p=1; p<=2; p++) {
 				int[][] hitCoor = new int[1][2];
 				System.err.println("Player " + p + ", enter hit row/column:");
 
-				for (int j=0; j<2; j++) {
-					
-					while(!in.hasNextInt()) {
-						System.out.println("Invalid coordinates. Choose different coordinates.");
-						in.next();
-					}
-					hitCoor[0][j] = in.nextInt();
+				int r, c;
+
+				hitCoor = checkInput();
+				
+				r = hitCoor[0][0]
+				
+
+				if (p == 1) {
+					while(player1TH[r][c] == '-') {
+
+						hitCoor[0][j] = in.nextInt();
+
+						r = hitCoor[0][0];
+						c = hitCoor[0][1];
+
+					} 
+
+				} else if (p == 2) {
+
+
+
 				}
+
 			}
 
 		} while(!winner);
+	}
+
+	// check input validitiy
+	private static int[][] checkInput() {
+		Scanner in = new Scanner(System.in);
+		int[][] tempArray = new int[1][2];
+		for (int j=0; j<2; j++) {
+			while(!in.hasNextInt()) {
+				System.out.println("Invalid coordinates. Choose different coordinates.");
+				in.next();
+			}
+			tempArray[0][j] = in.nextInt();
+		}
+		
+		return tempArray;
 	}
 
 		
