@@ -46,21 +46,8 @@ public class Battleship {
 				for (int i=0; i<5; i++) {
 					System.out.println("Enter ship " + (i + 1) + " location:");
 					int[][] tempArray = new int[1][2];
-
-					for (int j=0; j<2; j++) {
-						while(!in.hasNextInt()) {
-							System.out.println("Invalid coordinates. Choose different coordinates.");
-							in.next();
-							
-							while(in.hasNextInt() && in.nextInt() < 0) {
-								System.out.println("Invalid coordinates. Choose different coordinates.");
-								in.next();
-							}
-						}
-						
-						tempArray[0][j] = in.nextInt();
-
-					}
+												
+					tempArray = checkInput();
 
 					int r = tempArray[0][0];
 					int c = tempArray[0][1];
@@ -190,23 +177,63 @@ public class Battleship {
 	}
 
 	// check input validitiy
-	private static int[][] checkInput() {
-		Scanner in = new Scanner(System.in);
-		int[][] tempArray = new int[1][2];
-		for (int j=0; j<2; j++) {
-			while(!in.hasNextInt()) {
-				System.out.println("Invalid coordinates. Choose different coordinates.");
-				in.next();
-				
-				while(in.hasNextInt() && in.nextInt() < 0) {
-					System.out.println("Invalid coordinates. Choose different coordinates.");
-					in.next();
-				}
-			}
-			tempArray[0][j] = in.nextInt();
-		}
+	// private static int[][] checkInput() {
+	// 	Scanner in = new Scanner(System.in);
+	// 	int[][] tempArray = new int[1][2];
+	// 	int newInteger = -1;
+
+	// 	for (int j=0; j<2; j++) {
+	// 		newInteger = validInt(in);
+	// 		while(newInteger < 0) {
+	// 			System.out.println("Invalid coordinates. Choose different coordinates.");
+	// 			newInteger = validInt(in);
+	// 		}
+	// 		tempArray[0][j] = newInteger;
+	// 	}
 		
-		return tempArray;
+	// 	return tempArray;
+	// }
+
+	public static int[] checkInput() {
+        Scanner scanner = new Scanner(System.in);
+        int[] coordinates = new int[2];
+        boolean validInput = false;
+
+        while (!validInput) {
+            System.out.println("Enter two integers between 0 and 4 separated by a space:");
+
+            String input = scanner.nextLine();
+            String[] parts = input.split(" ");
+
+            if (parts.length == 2) {
+                try {
+                    int firstInt = Integer.parseInt(parts[0]);
+                    int secondInt = Integer.parseInt(parts[1]);
+
+                    if (firstInt >= 0 && firstInt <= 4 && secondInt >= 0 && secondInt <= 4) {
+                        coordinates[0] = firstInt;
+                        coordinates[1] = secondInt;
+                        validInput = true;
+                    } else {
+                        System.out.println("Invalid coordinates. Choose different coordinates.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid coordinates. Choose different coordinates.");
+                }
+            } else {
+                System.out.println("Invalid coordinates. Choose different coordinates.");
+            }
+        }
+
+        return coordinates;
+    }
+
+	private static int validInt(Scanner sc) {
+		while(!sc.hasNextInt()) {
+			System.out.println("Invalid coordinates. Choose different coordinates.");
+			sc.nextInt();
+		}
+		return sc.nextInt();
 	}
 
 		
